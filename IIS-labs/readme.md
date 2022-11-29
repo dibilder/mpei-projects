@@ -1,0 +1,1 @@
+Little programs in Prolog and lisp naguages.
