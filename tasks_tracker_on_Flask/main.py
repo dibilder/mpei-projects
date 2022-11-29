@@ -15,6 +15,7 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.update(dict(DATABASE=os.path.join(app.root_path, 'flsite.db')))
 
+"""Login manager settings"""
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_messag = "Please log in to access this page."
@@ -22,16 +23,18 @@ login_manager.login_message_category = "error"
 
 @login_manager.user_loader
 def load_user(user_id):
-    print("load_user")
+    """Load user function"""
     return UserLogin().fromDB(user_id, dbase)
 
 def connect_db():
+    """Connect to DB"""
     conn = sqlite3.connect(app.config['DATABASE'])
     conn.row_factory = sqlite3.Row
     return conn
 
 
 def create_db():
+    """Create DB initial function"""
     db = connect_db()
     with app.open_resource('sq_db.sql', mode='r') as f:
         db.cursor().executescript(f.read())
@@ -45,38 +48,45 @@ def get_db():
     return g.link_db
 
 
+"""Global variables"""
 dbase = None  # global
+departments = None  # global
+priorities = None  # global
+statuses = None  # global
+users = None  # global
 
 
 @app.before_request
 def before_request():
     """Connect to BD before anyone request"""
-    global dbase
+    global dbase, departments, priorities, statuses, users
     db = get_db()
     dbase = FDataBase(db)
 
+    """Get some info before anyone request"""
+    departments = dbase.getAllDepartments()
+    priorities = dbase.getAllPriorities()
+    statuses = dbase.getAllStatuses()
+    users = dbase.getAllUsers()
 
 @app.teardown_appcontext
 def close_db(error):
+    """Close DB connection"""
     if hasattr(g, 'link_db'):
         g.link_db.close()
-
 
 
 @app.route("/")
 @login_required
 def index():
-    departments = dbase.getAllDepartments()
+    """Function for default page"""
     return render_template('default.html', menu=dbase.getMenu(), posts=dbase.getRequestPreview(), departments=departments)
 
 
 @app.route("/add_request", methods=["POST", "GET"])
 @login_required
 def addRequest():
-    priorities = dbase.getAllPriorities()
-    statuses = dbase.getAllStatuses()
-    users = dbase.getAllUsers()
-    departments = dbase.getAllDepartments()
+    """Function for add request page"""
     URL = ""
     if request.method == "POST":
         if len(request.form['name']) > 4 and len(request.form['text']) > 4:
@@ -96,23 +106,19 @@ def addRequest():
 @app.route("/requestsForDepartment/<department_id>")
 @login_required
 def showDepRequests(department_id):
+    """Function for page about requests for current department """
     department = dbase.getDepartment(department_id)
-    priorities = dbase.getAllPriorities()
-    statuses = dbase.getAllStatuses()
-    users = dbase.getAllUsers()
-
     statusesCount = len(statuses)
     requests = []
     for i in range(statusesCount):
         requests.append(dbase.getRequestByDepartment(department_id, (i+1)))
-
-
 
     return render_template('requests_for_department.html', menu=dbase.getMenu(), requests=requests, department=department, statuses=statuses, priorities = priorities, users = users)
 
 @app.route("/request/<alias>")
 @login_required
 def showRequest(alias):
+    """Function for request view page"""
     title, text, priority_id, status_id, url, assignee_id, department_id = dbase.getRequest(alias)
     priority = dbase.getPriority(priority_id)
     status = dbase.getStatus(status_id)
@@ -125,6 +131,7 @@ def showRequest(alias):
 @app.route("/deleteRequest/<alias>")
 @login_required
 def delRequest(alias):
+    """Function for request delete page"""
     title = "Delete request"
     res = dbase.delRequest(alias)
     print(res)
@@ -137,11 +144,8 @@ def delRequest(alias):
 @app.route("/editRequest/<alias>", methods=["POST", "GET"])
 @login_required
 def editRequest(alias):
+    """Function for request edit page"""
     title, text, priority_id, status_id, url, assignee_id, department_id = dbase.getRequest(alias)
-    priorities = dbase.getAllPriorities()
-    statuses = dbase.getAllStatuses()
-    users = dbase.getAllUsers()
-    departments = dbase.getAllDepartments()
     if not title:
         abort(404)
     if request.method == "POST":
@@ -163,6 +167,7 @@ def editRequest(alias):
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
+    """Function for login page"""
     if current_user.is_authenticated:
         return redirect(url_for('profile'))
 
@@ -182,6 +187,7 @@ def login():
 
 @app.route("/register", methods=["POST", "GET"])
 def register():
+    """Function for request delete page"""
     if request.method == "POST":
         if len(request.form['name']) > 4 and len(request.form['email']) > 4 \
                 and len(request.form['psw']) > 4 and request.form['psw'] == request.form['psw2']:
@@ -200,6 +206,7 @@ def register():
 @app.route('/logout')
 @login_required
 def logout():
+    """Logout fucntion"""
     logout_user()
     flash("Вы вышли из аккаунта", "success")
     return redirect(url_for('login'))
@@ -208,6 +215,7 @@ def logout():
 @app.route('/profile')
 @login_required
 def profile():
+    """Function for profile page"""
     id, name, email, psw, time = dbase.getUser(current_user.get_id())
     return render_template('profile.html', menu=dbase.getMenu(), title="Profile", id=id, name=name, email=email, time=time)
 

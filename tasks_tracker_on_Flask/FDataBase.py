@@ -1,11 +1,10 @@
 import sqlite3
 import math
 import time
-import re
-from flask import url_for
 
 
 class FDataBase:
+    """This class implements """
     def __init__(self, db):
         self.__db = db
         self.__cur = db.cursor()
