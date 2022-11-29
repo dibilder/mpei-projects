@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+<div class = "container">
+<div class="block border">
+<form action="{{url_for('addRequest')}}" method="post" class="form-contact">
+<p><label class="label">Title: </label> <input type="text" name="name" value="" required />
+<!-- <p><label>URL: </label> <input type="text" name="url" value="" required /> -->
+<p><span class="label">Priority: </span>	
+	{%- block priority -%}
+        <select name="priority_id" required>
+			{% for p in priorities -%}
+			<option value="{{p.id}}">{{p.name}}</option>
+			{% endfor -%}
+        </select>
+    {% endblock priority -%}
+<p><span class="label">Status: </span>	
+	{%- block status -%}
+        <select name="status_id">
+			{% for s in statuses -%}
+			<option value="{{s.id}}">{{s.name}}</option>
+			{% endfor -%}
+        </select>
+    {% endblock status -%}
+<p><span class="label">Assignee: </span>	
+	{%- block assignee -%}
+        <select name="assignee_id">
+			{% for u in users -%}
+			<option value="{{u.id}}">{{u.name}}</option>
+			{% endfor -%}
+        </select>
+    {% endblock assignee -%}
+<p><span class="label">Department: </span>	
+	{%- block department -%}
+        <select name="department_id">
+			{% for d in departments -%}
+			<option value="{{d.id}}">{{d.name}}</option>
+			{% endfor -%}
+        </select>
+    {% endblock department -%}
+<p><label class="label">Description: </label>
+<p><textarea name="text" rows=7 cols=40 maxlength=200></textarea>
+<p><input type="submit" value="Submit" class="button"/>
+</form>
+</div>
+</div>
+{% include "footer.html" %}
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<div class="container">
+<div class="block">
+<h2> Delete request result: </h2>
+</div>
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+</div>
+</div>
+{% include "footer.html" %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<div class="container"> 
+<div class="block border">
+	<span> Requests for {{ department }} </span>
+</div>
+</div>	
+<div class="container blocks">
+	{%- block requests -%}						
+				{% for reqBystatus in requests %}
+					{% if reqBystatus is not none %} 
+					<div class="border tasks_block small_block">
+						<ul class="square">				
+						<span class="status"> Status: {{ (statuses[(loop.index - 1)]).name }}</span>
+							
+								{% for r in reqBystatus %}
+								<li>					
+									<div class="title"><a href="{{ url_for('showRequest', alias=r.url)}}"> {{r.title}} / {{ priorities[r.priority_id - 1].name }} / {{ users[r.assignee_id - 1].name }}</a></div>
+								</li>	
+								{% endfor %}
+							
+						</ul>
+					</div>
+					{% endif %}
+				{% endfor %}				
+    {% endblock requests -%}
+</div>
+
+{% include "footer.html" %}
+{% endblock %}

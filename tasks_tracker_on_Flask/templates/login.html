@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+<div class = "container">
+<div class="block border">
+
+<form action="" method="post" class="form-contact">
+<p><label>Email: </label> <input type="text" name="email" value="" required />
+<p><label>Password: </label> <input type="password" name="psw" value="" required />
+<p><input type="Checkbox" name="remainme" /> Remain me
+<p><input type="submit" value="Login" class="button"/>
+<hr align=left width="300px">
+<p><a href="{{url_for('register')}}"> Registration </a>
+</form>
+
+</div>
+</div>
+{% include "footer.html" %}
+{% endblock %}

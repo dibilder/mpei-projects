@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<div class="container">
+<div class="block border">
+
+<p><span class="border tasks_block">Active requests for support lines </span>	
+	{%- block department -%}
+			{% for d in departments -%}
+			<div class="border tasks_block">
+				<div class="department">Tasks for {{d.name}}:
+						<a href="{{ url_for('showDepRequests', department_id=d.id) }}">
+							<button class="button">View all tasks</button>
+						</a> 
+				</div>
+			
+				<ul class="square">
+				{% for p in posts %}
+					{% if p.department_id == d.id  and p.status_id != 3%}
+					<li>					
+						<div class="title"><a href="{{ url_for('showRequest', alias=p.url)}}"> {{p.title}}</a></div>
+					</li>
+					{% endif %}	
+				
+				{% endfor %}
+				</ul>
+			</div>
+			{% endfor -%}
+    {% endblock department -%}
+
+</div>
+</div>
+{% include "footer.html" %}
+{% endblock %}

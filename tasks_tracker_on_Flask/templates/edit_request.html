@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+
+<div class = "container">
+<div class="block border">
+<form action="/editRequest/{{number}}" method="post" class="form-contact">
+<p><label>Title: </label> <input type="text" name="title" value="{{ title }}" required />
+<p><label class="label_disabled">Number: </label> <input class="label_disabled" type="text" name="url" value="{{number}}" readonly />
+<p><span>Priority: </span>	
+	{%- block priority -%}
+        <select name="priority_id">
+			{% for p in priorities -%}
+			<option value="{{p.id}}" 
+				{% if p.id == priority %}
+					selected
+				{% endif %}				
+			>{{p.name}}</option>
+			{% endfor -%}
+        </select>
+    {% endblock priority -%}
+<p><span>Status: </span>	
+	{%- block status -%}
+        <select name="status_id">
+			{% for s in statuses -%}
+			<option value="{{s.id}}" 
+				{% if s.id == status %}
+					selected
+				{% endif %}				
+			>{{s.name}}</option>
+			{% endfor -%}
+        </select>
+    {% endblock status -%}
+<p><span>Assignee: </span>	
+	{%- block assignee -%}
+        <select name="assignee_id">
+			{% for u in users -%}
+			<option value="{{u.id}}" 
+				{% if u.id == assignee %}
+					selected
+				{% endif %}				
+			>{{u.name}}</option>
+			{% endfor -%}
+        </select>
+    {% endblock assignee -%}
+<p><span>Department: </span>	
+	{%- block department -%}
+        <select name="department_id">
+			{% for d in departments -%}
+			<option value="{{d.id}}" 
+				{% if d.id == department %}
+					selected
+				{% endif %}				
+			>{{d.name}}</option>
+			{% endfor -%}
+        </select>
+    {% endblock department -%}
+<p><label>Description: </label>
+<p><textarea name="text" rows=7 cols=40 maxlength=200>{{text}}</textarea>
+<p><input type="submit" value="Submit" class="button"/>
+</form>
+</div>
+</div>
+{% include "footer.html" %}
+{% endblock %}

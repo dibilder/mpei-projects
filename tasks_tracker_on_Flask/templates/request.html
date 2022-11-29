@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<div class = "container">
+<div class="block border">
+<a href="{{ url_for('editRequest', alias=number) }}">
+   <button class="button">Edit</button>
+</a> 
+<a href="{{ url_for('delRequest', alias=number) }}">
+   <button class="button">Delete</button>
+</a>
+<p>Request number: {{ number }}</p>
+<p>Title: {{ title }}</p>
+<p>Priority: {{ priority }}</p>
+<p>Status: <span class= {% if status == 'Closed' %} 
+							"closed" 
+						{% endif %}> {{ status }} </span></p>
+<p>Assignee: {{ assignee }}</p>
+<p>Department: {{ department }}</p>
+<P>Description: </p>
+<textarea readonly class="textarea" rows=7 cols=40> {{ post }} </textarea>
+</div>
+</div>
+{% include "footer.html" %}
+{% endblock %}
