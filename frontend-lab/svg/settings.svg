@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="a" d="M0 9.5V19h6V0H0v9.5z"/>
+    <path id="c" d="M6 19H0V0h6v19z"/>
+    <path id="e" d="M6 9.5V19H0V0h6v9.5z"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(0 .5)">
+      <mask id="b" fill="#fff">
+        <path d="M0 9.5V19h6V0H0v9.5z" transform="matrix(1, 0, 0, 1, 0, 0)"/>
+      </mask>
+      <path d="M3 5.5a1 1 0 110-2 1 1 0 010 2m1-3.9V1a1 1 0 10-2 0v.6a3 3 0 00-2 2.9 3 3 0 002 2.8V18a1 1 0 002 0V7.3a3 3 0 002-2.8 3 3 0 00-2-2.9" mask="url(#b)" style="fill: rgb(176, 54, 0);"/>
+    </g>
+    <g transform="translate(7 .5)">
+      <mask id="d" fill="#fff">
+        <path d="M6 19H0V0h6v19z" transform="matrix(1, 0, 0, 1, 0, 0)"/>
+      </mask>
+      <path d="M3 15.5a1 1 0 110-2 1 1 0 010 2m1-3.9V1a1 1 0 10-2 0v10.6a3 3 0 00-2 2.9 3 3 0 002 2.8v.7a1 1 0 002 0v-.7a3 3 0 002-2.8 3 3 0 00-2-2.9" mask="url(#d)" style="fill: rgb(176, 54, 0);"/>
+    </g>
+    <g transform="translate(14 .5)">
+      <mask id="f" fill="#fff">
+        <path d="M6 9.5V19H0V0h6v9.5z" transform="matrix(1, 0, 0, 1, 0, 0)"/>
+      </mask>
+      <path d="M3 9.5a1 1 0 110-2 1 1 0 010 2m1-3.9V1a1 1 0 10-2 0v4.6a3 3 0 00-2 2.9 3 3 0 002 2.8V18a1 1 0 002 0v-6.7a3 3 0 002-2.8 3 3 0 00-2-2.9" mask="url(#f)" style="fill: rgb(176, 54, 0);"/>
+    </g>
+  </g>
+</svg>

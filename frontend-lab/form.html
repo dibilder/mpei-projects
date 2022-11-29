@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<!-- Ну тут все как в индексе -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="font/fonts.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Поиск жилья по всей России - "Уголок"</title>
+  <!-- Подключение JS скрипта. Несколько изменений вариантов выбора в зависимости от желаний пользователя-->
+ <script src="script.js"></script>
+</head>
+
+<body>
+
+<!-- Опять шапка сайта -->
+ <script src="script.js"></script>
+  <header class="header">
+    <div class="container container_header">
+      <a class="logo" href="index.html">
+        <img class="logo__img" src="svg/logo.svg" alt="">
+        <span class="logo__text">Уголок</span>
+      </a>
+      <nav class="menu">
+        <span class="menu__link">Поиск</span>
+        <a class="menu__link" href="contacts.html">Контакты</a>
+        <a class="menu__link" href="about.html">Компания и команда</a>
+        <a class="menu__link" href="tel:+7123112233">+7 123 11-22-33</a>
+      </nav>
+    </div>
+  </header>
+<!--  Форма -->
+  <div class="container_form">
+    <h1 class="h">Форма поиска жилья</h1>
+    <form action="search.html" class="form" name="myForm">
+      <fieldset class="fieldset fieldset_search_parameters">
+        <legend>Параметры поиска</legend>
+        <hr>
+        <div class="fieldset__content">
+		<!-- Радиокнопка с выбором из двух вариантов -->
+		 <div class="label">
+            <span>Вы хотите</span>
+            <div class="radiobuttons">
+              <label class="radio">
+                <input name="homeType" type="radio" value="Buy" onchange="handleChange(this);">
+                <span>Купить</span>
+              </label>
+              <label class="radio">
+                <input name="homeType" type="radio" value="Rent" onchange="handleChange(this);" checked>
+                <span>Снять</span>
+              </label>
+            </div>
+			<span class="label__caption">Обязательно</span>
+          </div>
+		  
+		  
+	<!-- Выпадающий список -->
+		<label class="label">
+            <span>Тип жилья</span>
+            <select name="Type" onchange="handleChange2(this);">
+              <option value="Flat"  checked>Квартиру</option>
+			  <option value="House" >Дом</option>	
+              <option value="Room" >Комнату</option>
+			  <option value="Apartment" >Номер</option>              		  
+			  <option value="Bad" >Койко-место</option>
+            </select>
+        </label>
+	<!-- Выпадающий список -->
+   		<label class="label">
+            <span>Количество комнат</span>
+            <select name="rooms" id="rooms">
+              <option value="1">1</option>
+              <option value="2-3">2-3</option>
+              <option value="4-5">4-6</option>
+			  <option value="Studio">Студия</option>
+            </select>
+        </label>
+		<!-- Простое текстовое поле -->
+          <label class="label">
+            <span>Город</span>
+            <input type="text" name="city" placeholder="Москва" required>
+            <span class="label__caption">Обязательно</span>
+          </label>
+		  
+		  <!-- Два текстовых поля для указания диапазона цены -->
+          <label class="label">
+            <span>Цена</span>
+            От <input type="text" name="price_low" placeholder="1000" class="price_label">
+			До <input type="text" name="price_top" placeholder="5000" class="price_label">
+          </label>
+		  
+		  </fieldset>
+		  <br>
+		  <fieldset class="fieldset fieldset_search_parameters fieldset_date">
+		  <label class="label">
+            <span>Выберите даты: </span>
+			C <input type="date" name="calendar_start" class="date" id="date_start">
+			По <input type="date" name="calendar_end" class="date" id="date_end">
+          </label>
+	</fieldset>
+
+        </div>
+			
+<!--  Чекбоксы с удобствами по категориям-->
+      <fieldset class="fieldset fieldset_comfort container_form">
+        <legend>Необходимые удобства</legend>
+        <hr>
+        <div class="fieldset__content">
+
+          <div class="checkbox-group">
+		  	<label class="label">
+            <span>Количество кроватей</span>
+            <select name="bad">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3+</option>
+            </select>
+          </label>
+            <div class="label">
+              <span>Обустройство</span>
+              <label class="checkbox">
+                <input name="Kitchen" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Кухня</span>
+              </label>
+              <label class="checkbox">
+                <input name="Bathroom" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Санузел</span>
+              </label>
+              <label class="checkbox">
+                <input name="workspace" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Рабочее место</span>
+              </label>
+            </div>
+            <div class="label">
+              <span>На улице</span>
+              <label class="checkbox">
+                <input name="Pool" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Бассейн</span>
+              </label>
+              <label class="checkbox">
+                <input name="freeparking" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Бесплатная парковка</span>
+              </label>
+              <label class="checkbox">
+                <input name="Greel" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24"  alt="Галочка">
+                <span>Зона барбекю</span>
+              </label>
+              <label class="checkbox">
+                <input name="Smoking" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Зона для курения</span>
+              </label>
+              <label class="checkbox">
+                <input name="Beach" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Рядом пляж</span>
+              </label>
+            </div>
+			<div class="label">
+              <span>Климат контроль</span>
+              <label class="checkbox">
+                <input name="Heating" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Отопление</span>
+              </label>
+              <label class="checkbox">
+                <input name="Conditional" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Кондиционер</span>
+              </label>
+            </div>
+			
+			<div class="label">
+              <span>Бытовая техника</span>
+              <label class="checkbox">
+                <input name="WiFi" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Wi-Fi</span>
+              </label>
+              <label class="checkbox">
+                <input name="WashMachine" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Стиральная машина</span>
+              </label>
+              <label class="checkbox">
+                <input name="TV" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" width="19" height="24" alt="Галочка">
+                <span>Телевизор</span>
+              </label>
+			  <label class="checkbox">
+                <input name="Hairdrier" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Фен</span>
+              </label>
+			   <label class="checkbox">
+                <input name="closesdrier" type="checkbox">
+                <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+                <span>Утюг</span>
+              </label>
+            </div>
+
+          </div>
+        </div>
+      </fieldset>
+	  <!--  Кнопочка для политики конфиденциальности-->
+      <div class="form__buttons container_form">
+        <label class="checkbox">
+          <input name="policyAccepted" type="checkbox" required>
+         <img class="checkmark" src="svg/check.svg" width="19" height="24" alt="Галочка">
+          <span>Я соглашаюсь на обработку персональных данных</span>
+        </label>
+        <button type="submit" class="button button_solid button_green">Поиск</button>
+        <button type="reset" class="button button_outline button_black">Сбросить</button>
+      </div>
+
+    </form>
+  </div>
+<!-- Такой же футер, как и везде -->
+  <footer class="footer">
+    <div class="container_form">
+      <div>
+        <div class="footer__logo">
+          <img src="svg/logo.svg" alt="" class="logo__img">
+          <span>Уголок</span>
+        </div>
+        <div class="footer__text-wrap">
+          <a class="footer__text" href="index.html">Главная</a>
+          <a class="footer__text" href="form.html">Поиск</a>
+          <a class="footer__text" href="contacts.html">Контакты</a>
+          <a class="footer__text" href="about.html">Компания и команда</a>
+          
+        </div>
+
+      </div>
+      <div>
+        <div class="footer__text-wrap right">
+          <span class="footer__text">г. Москва, ул. Красноказарменная, 17</span>
+          <a class="footer__text" href="mailto:help@ugolok.ru">help@ugolok.ru</a>
+		  <a class="footer__text" href="tel:+7123112233">+7 123 11-22-33</a>
+          
+        </div>
+      </div>
+    </div>
+  </footer>
+
+ 
+</body>
+
+</html>

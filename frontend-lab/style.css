@@ -1,0 +1,610 @@
+/* Глобальные стили для всех страниц. Тут шрифт, размер шрифта, паддинг и межстрочный интервал*/
+body {
+  font-family: 'Inter';
+  font-size: 18px;
+  line-height: 28px;
+  padding: 78px 0 48px;
+}
+
+/* Стили для заголовков*/
+h1,
+h2 {
+  margin: 0;
+  line-height: normal;
+}
+
+/* Стили для ссылок. Тут отключение декораций текста, цвет и свойства для создания эффекта перехода*/
+a {
+  text-decoration: none;
+  color: #b03600;
+  transition-property: color, background-color;
+  transition-duration: .3s;
+  transition-timing-function: ease-out;
+}
+
+/* Стили при наведении на ссылку */
+a:hover {
+  color: #a96e54;
+  transition: none;
+}
+
+/* Стили для линии */
+hr {
+  height: 1px;
+  border: none;
+}
+
+/* Стиль для класса container. Используется как основной блок страницы */
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Стиль для класса container_form. Используется как основной блок страниц, где нужно занимать неполную ширину */
+.container_form {
+	width: 93%;
+	margin: 0 auto;
+}
+
+/* Стиль для классов хедера и футера. Задает свойство flex, отменяющее переход на новую строку, устанавливает выравнивание всех flex-элементов по главной оси и одинаковое пространство между ними,    */
+.header .container,
+.footer .container_form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Флексы выравниваются в начале поперечной оси контейнера. */
+}
+
+/* Стили для кнопки */
+
+.button {
+  cursor: pointer;
+  appearance: none;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 40px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 8px;
+  padding: 7px 24px;
+  line-height: normal;
+  font-size: 18px;
+  font-family: 'Inter';
+  font-weight: normal;
+  transition-property: color, background-color, border-color;
+  transition-duration: .3s;
+  transition-timing-function: ease-out;
+}
+
+.button:hover {
+  transition: none;
+}
+
+/* Коричневые кнопки */
+
+.button_brown {
+  color: #b03600;
+  border-color: #b03600;
+  background-color: #b03600;
+}
+
+.button_brown:hover {
+  color: #4a1a05;
+  border-color: #4a1a05;
+  background-color: #4a1a05;
+}
+
+.button_brown:hover.button_solid {
+  border-color: #4a1a05;
+}
+
+/* Зелёные кнопки */
+
+.button_green {
+  color: #528e7c;
+  border-color: #528e7c;
+  background-color: #528e7c;
+}
+
+.button_green:hover {
+  color: #75b370;
+  border-color: #75b370;
+  background-color: #6bae77;
+}
+
+.button_green:hover.button_solid {
+  border-color: #6bae77;
+}
+
+/* Красные кнопки */
+
+.button_black {
+  color: #000000;
+  border-color: #000000;
+  background-color: #000000;
+}
+
+.button_black:hover {
+  color: #b03600;
+  border-color: #b03600;
+  background-color: #cc6464;
+}
+
+.button_black:hover.button_solid {
+  border-color: #cc6464;
+}
+
+.button_solid {
+  color: #ffffff;
+}
+
+.button_solid:hover {
+  color: #ffffff;
+}
+
+.button_outline {
+  background: none;
+}
+
+.button_outline:hover {
+  background: none;
+}
+
+/* Еще стили для текста. Преимущественно для заголовков на страницах*/
+
+.h {
+  /**/
+  font-size: 36px;
+  line-height: normal;
+  letter-spacing: 0.02em;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.h_big-margin-top {
+  margin-top: 64px;
+}
+
+.h_button {
+  display: flex;
+}
+
+.h_button .button {
+  margin-left: 32px;
+  margin-top: 11px;
+  letter-spacing: normal;
+}
+
+
+p,
+ul {
+  width: 667px;
+  margin-bottom: 16px;
+  padding: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.right {
+  text-align: right;
+}
+
+/* Стили для шапки*/
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  height: 77px;
+  border-bottom: 1px solid #b4b4b4;
+  
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  background-color: #ffffff;
+  z-index: 1; /* На передний план*/
+}
+
+/* Стили для логотипа*/
+
+.logo {
+	padding-left: 50px;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 24px;
+  padding-top: 15px;
+  height: 77px;
+}
+
+.logo__img {
+  width: 50px;
+  height: 40px;
+}
+
+.logo__text {
+  line-height: normal;
+  margin-top: 3px;
+  margin-left: 8px;
+}
+
+/* Стили для меню*/
+
+.menu {
+  display: flex; /* Задает свойство гибкости*/
+  position: relative; /* Относительное позиционирование*/
+  left: 16px;
+  padding-right:50px;
+}
+
+.menu__link {
+  box-sizing: border-box;
+  height: 77px;
+  padding: 23px 16px 0;
+}
+
+/* Действие при наведении*/
+a.menu__link:hover {
+  color: #b03600;
+  background-color: #f4c0a8;
+}
+
+/* Футер */
+
+.footer {
+  margin-top: 80px;
+  padding-top: 14px;
+  border-top: 1px solid #b4b4b4;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer__logo span {
+  
+  font-size: 24px;
+  line-height: normal;
+  letter-spacing: 0.02em;
+  color: #b03600;
+  margin-left: 6px;
+}
+
+.footer__sign {
+  
+  font-size: 14px;
+  line-height: 25px;
+  letter-spacing: 0.02em;
+  color: #b4b4b4;
+  display: block;
+  margin-top: 10px;
+}
+
+.footer__sign a {
+  color: #9b91e6;
+}
+
+.footer__sign a:hover {
+  color: #aea6e9;
+}
+
+.footer__text {
+  display: block;
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 8px;
+}
+
+.footer__text-wrap {
+  margin-top: 16px;
+}
+
+/* Контакты */
+
+
+.contacts {
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contacts__label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.contacts__value {
+  display: block;
+}
+
+
+/*
+ * Главная
+ */
+
+/* Первый блок */
+
+.first-block {
+  /*margin-top: 32px;*/
+  height: 561px;
+  background-image: url(img/main-houses.jpg);
+  background-repeat: no-repeat;
+  background-position-x: center;
+}
+
+.first-block-text-block {
+	margin-left: 50px;
+	
+}
+
+.first-block h1 {
+  
+  font-size: 62px;
+  line-height: 74px;
+  letter-spacing: 0.02em;
+}
+
+.first-block span {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+
+/* Блок преимуществ */
+
+.advantages {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  column-gap: 20px;
+  margin-left:35px;
+}
+
+.advantage {
+  width: 280px;
+}
+
+.advantage__img {
+  position: relative;
+  display: block;
+  
+  left: -35px;
+  top: 28px;
+}
+
+
+.advantage__header {
+  display: block;
+  
+  font-size: 20px;
+  line-height: normal;
+  letter-spacing: 0.02em;
+}
+
+.advantage__text {
+  display: block;
+  margin-top: 4px;
+}
+
+
+
+/*  Форма */
+
+.form__buttons {
+  margin-top: 48px;
+}
+
+.form__buttons .checkbox {
+  margin-bottom: 16px;
+}
+
+.form__buttons button {
+  display: inline-block;
+}
+
+.form__buttons button[type="reset"] {
+  margin-left: 19px;
+}
+
+.label {
+  display: block;
+}
+
+.label_disabled {
+  color: #b4b4b4;
+}
+
+.label>span {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.label__caption {
+  font-weight: 300 !important;
+  margin-bottom: 0 !important;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: normal;
+  color: #333333;
+}
+
+.price_label {
+	  width: 80px !important;	
+}
+
+input[type="text"],
+textarea,
+select, .date {
+  box-sizing: border-box;
+  width: 180px;
+  padding: 6px 12px;
+  border: 1px solid #b4b4b4;
+  border-radius: 8px;
+  line-height: 28px;
+}
+
+
+
+textarea {
+  width: 476px;
+  min-height: 179px;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #b4b4b4;
+  opacity: 1;
+}
+
+input[type="text"]:disabled {
+  color: #b4b4b4;
+}
+
+
+
+/* Селект */
+
+select {
+  appearance: none;
+  background: url(svg/chevron-down.svg) no-repeat 97%;
+  background-color: #fff;
+  background-size: 32px 24px;
+  padding-right: 48px;
+  cursor: pointer;
+}
+
+/* Чекбокс */
+
+.checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #b4b4b4;
+  border-radius: 6px;
+  margin: 0 8px 0 0;
+}
+
+.checkmark {
+  display: none;
+  position: absolute;
+  top: 1px;
+  left: 4px;
+}
+
+input[type="checkbox"]:checked+.checkmark {
+  display: block;
+}
+
+.checkbox-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Радиокнопки */
+
+.radiobuttons {
+  display: flex;
+  border: 1px solid #b4b4b4;
+  border-radius: 8px;
+  box-sizing: border-box;
+  height: 42px;
+}
+
+.radio input {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio span {
+  display: block;
+  box-sizing: border-box;
+  height: 42px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.radio input:checked+span {
+  color: #b03600;
+  border: 2px solid #b03600;
+  border-radius: 8px;
+  position: relative;
+  padding: 5px 11px;
+  cursor: default;
+}
+
+.radio:first-child input:checked+span {
+  top: -1px;
+  left: -1px;
+}
+
+.radio:last-child input:checked+span {
+  top: -1px;
+  left: 1px;
+}
+
+/* Стили для формы поиска */
+
+.fieldset {
+  padding: 0;
+  border: none;
+  margin-top: 32px;
+}
+
+.fieldset:first-child {
+  margin-top: 0;
+}
+
+.fieldset legend {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.fieldset hr {
+  background-color: #d9d9d9;
+  margin: 8px 0 16px;
+}
+.fieldset_date {
+	margin-top: 0px !important;
+}
+
+.fieldset_search_parameters .fieldset__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fieldset_search_parameters .checkbox {
+  margin-top: 8px;
+}
+
+
+.fieldset_comfort .checkbox-group {
+  margin-top: 24px;
+}
+
+.fieldset_comfort .checkbox-group .checkbox {
+  margin-bottom: 8px;
+}
+
+.fieldset_comfort .checkbox-group .checkbox:last-child {
+  margin-bottom: 0;
+}
+
+.fieldset_comfort .checkbox-group .label > span {
+  margin-bottom: 8px;
+}

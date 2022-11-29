@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<!--Прокомментирую только index.html, остальные не буду, так как там все аналогично -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Иконка во вкладке-->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <!-- Набор стилей, стандартизирующий отображение в разных браузерах -->
+  <link rel="stylesheet" href="normalize.css">
+  <!-- CSS для подключения шрифтов-->
+  <link rel="stylesheet" href="font/fonts.css">
+  <!-- Основной набор стилей для всех страниц-->
+  <link rel="stylesheet" href="style.css">
+  <title>Поиск жилья по всей России — «Уголок»</title>
+</head>
+
+<body>
+<!-- Шапка сайта -->
+  <header class="header">
+    <div class="container container_header">
+      <div class="logo">
+        <img class="logo__img" src="svg/logo.svg" alt="">
+        <span class="logo__text">Уголок</span>
+      </div>
+      <nav class="menu">
+        <a class="menu__link" href="form.html">Поиск</a>
+        <a class="menu__link" href="contacts.html">Контакты</a>
+        <a class="menu__link" href="about.html">Компания и команда</a>
+        <a class="menu__link" href="tel:+71234567890">+7 123 111-22-33</a>
+      </nav>
+    </div>
+  </header>
+<!-- Основной блок. Красивая картинка и ссылка на форму. -->
+  <div class="container first-block">
+	<div class="first-block-text-block">
+    <h1>Поиск<br>жилья<br>по всей России</h1>
+    <span>— Быстро<br>— Удобно<br>— Множество параметров</span>
+    <a href="form.html" class="button button_outline button_brown">Найти жилье</a>
+	</div>
+  </div>
+ <!-- Блок с преимуществами, чтобы страница не была такой пустой. Пусть будет --> 
+  <div class="container_form">
+    <h2 class="h h_big-margin-top h_button">Наши преимущества</h2>
+    <div class="advantages">
+      <div class="advantage">
+        <img class="advantage__img" src="svg/pig.svg" alt="">
+        <span class="advantage__header">Низкие цены</span>
+        <span class="advantage__text">Мы работаем напрямую с тысячами отелей, десятками поставщиков и контролируем цены на номера. Поэтому у нас всегда есть выгодные предложения на популярные направления.</span>
+      </div>
+      <div class="advantage">
+        <img class="advantage__img" src="svg/key.svg" alt="">
+        <span class="advantage__header">По всей России</span>
+        <span class="advantage__text">У нас более 600 000 вариантов размещения по всей стране. Это отели, хостелы, апартаменты, виллы и даже кемпинги. В любой сезон вы найдёте то, что подходит именно вам.</span>
+      </div>
+      <div class="advantage">
+        <img class="advantage__img" src="svg/settings.svg" alt="">
+        <span class="advantage__header">Гибкая оплата</span>
+        <span class="advantage__text">Вы сами выбираете способ оплаты. Можно оплатить бронь сразу — мы поддерживаем большинство банковских карт. А можно заплатить в отеле при заезде.</span>
+      </div>
+      <div class="advantage">
+        <img class="advantage__img" src="svg/callcenter.svg" alt="">
+        <span class="advantage__header">Поддержка 24\7</span>
+        <span class="advantage__text">Операторы поддержки помогут с выбором отеля и бронированием. Если вопрос возник в поездке, оператор будет на связи и найдёт решение в кратчайший срок.</span>
+      </div>
+      <div class="advantage">
+        <img class="advantage__img" src="svg/reviews.svg" alt="">
+        <span class="advantage__header">Достоверные отзывы</span>
+        <span class="advantage__text">Мы собираем и публикуем отзывы путешественников, а также добавляем отзывы TripAdvisor. Так вы получаете ещё больше информации об отеле.</span>
+      </div>
+      <div class="advantage">
+        <img class="advantage__img " src="svg/phone.svg" alt="">
+        <span class="advantage__header">Удобный сайт </span>
+        <span class="advantage__text">Главное в сайте - быстрый доступ ко всем вариантам. Бронируйте отели в метро, на работе и даже в аэропорту.</span>
+      </div>
+    </div>
+  </div>
+<!-- Футер сайта. Контактаная информация и дублирующая навигация по сайту. -->
+  <footer class="footer">
+    <div class="container_form">
+      <div>
+         <div class="footer__logo">
+          <img src="svg/logo.svg" alt="" class="logo__img">
+          <span>Уголок</span>
+        </div>
+        <div class="footer__text-wrap">
+          <a class="footer__text" href="index.html">Главная</a>
+          <a class="footer__text" href="form.html">Поиск</a>
+          <a class="footer__text" href="contacts.html">Контакты</a>
+          <a class="footer__text" href="about.html">Компания и команда</a>
+          
+        </div>
+
+      </div>
+      <div>
+        <div class="footer__text-wrap right">
+          <span class="footer__text">г. Москва, ул. Красноказарменная, 17</span>
+          <a class="footer__text" href="mailto:help@ugolok.ru">help@ugolok.ru</a>
+		  <a class="footer__text" href="tel:+71234567890">+7 123 111-22-33</a>
+          
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+ 
+</body>
+
+</html>
