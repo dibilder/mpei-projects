@@ -22,7 +22,8 @@ id integer PRIMARY KEY AUTOINCREMENT,
 name text NOT NULL,
 email text NOT NULL,
 psw text NOT NULL,
-time integer NOT NULL
+time integer NOT NULL,
+role_id integer
 );
 
 CREATE TABLE IF NOT EXISTS statuses (
@@ -40,4 +41,10 @@ id integer PRIMARY KEY AUTOINCREMENT,
 name text NOT NULL,
 description text,
 URL text
+);
+
+CREATE TABLE IF NOT EXISTS role (
+id integer PRIMARY KEY AUTOINCREMENT, 
+name text NOT NULL,
+description text
 );

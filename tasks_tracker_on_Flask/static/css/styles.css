@@ -327,6 +327,12 @@ input[type="text"][name="address"] {
   background: #a96e54;
 }
 
+.listsButton {
+	float: right;
+	margin-right: -8px;
+	margin-top: -2px;
+}
+
 .department button {
 	float: right;
 	margin-top: -5px;

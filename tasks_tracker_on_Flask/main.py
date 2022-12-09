@@ -83,6 +83,12 @@ def index():
     return render_template('default.html', menu=dbase.getMenu(), posts=dbase.getRequestPreview(), departments=departments)
 
 
+@app.route("/manage")
+@login_required
+def manage():
+    """Function for manage page"""
+    return render_template('manage.html', menu=dbase.getMenu(), departments=departments, priorities=priorities, statuses=statuses)
+
 @app.route("/add_request", methods=["POST", "GET"])
 @login_required
 def addRequest():
@@ -216,7 +222,7 @@ def logout():
 @login_required
 def profile():
     """Function for profile page"""
-    id, name, email, psw, time = dbase.getUser(current_user.get_id())
+    id, name, email, psw, time, role = dbase.getUser(current_user.get_id())
     return render_template('profile.html', menu=dbase.getMenu(), title="Profile", id=id, name=name, email=email, time=time)
 
 
