@@ -198,7 +198,8 @@ def register():
         if len(request.form['name']) > 4 and len(request.form['email']) > 4 \
                 and len(request.form['psw']) > 4 and request.form['psw'] == request.form['psw2']:
             hash = generate_password_hash(request.form['psw'])
-            res = dbase.addUser(request.form['name'], request.form['email'], hash)
+            role_id = 1  # IT IS TEMPORARY
+            res = dbase.addUser(request.form['name'], request.form['email'], hash, role_id)
             if res:
                 flash("Registration succeed", "success")
                 return redirect(url_for('login'))

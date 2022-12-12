@@ -183,7 +183,7 @@ class FDataBase:
 
         return []
 
-    def addUser(self, name, email, hpsw):
+    def addUser(self, name, email, hpsw, role_id):
         try:
             self.__cur.execute(f"SELECT COUNT() as 'count' FROM users WHERE email LIKE '{email}'")
             res = self.__cur.fetchone()
@@ -192,7 +192,7 @@ class FDataBase:
                 return False
 
             tm = math.floor(time.time())
-            self.__cur.execute("INSERT INTO users VALUES(NULL, ?, ?, ?, ?)", (name, email, hpsw, tm))
+            self.__cur.execute("INSERT INTO users VALUES(NULL, ?, ?, ?, ?, ?)", (name, email, hpsw, tm, role_id))
             self.__db.commit()
         except sqlite3.Error as e:
             print("Error while adding user into DB " + str(e))

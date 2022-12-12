@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<div class="container">
+<div class="block border">
+
+<p><span class="border tasks_block">Manage form for departments, requests and priorities. </span>	
+	{%- block parameters -%}
+		<div class="border tasks_block">
+				<div class="department">Manage departments:
+						<a href="">
+							<button class="button">Add</button>
+						</a> 
+				</div>
+			
+				<ul class="square">
+				{% for d in departments %}
+					<li>					
+						<span class="title"><a href=""> {{d.name}}</a>  </span> <a class="listsButton" href=""> <button class="button">Delete</button> </a>
+					</li>				
+				{% endfor %}
+				</ul>
+		</div>
+		
+		<div class="border tasks_block">
+				<div class="department">Manage priorities:
+						<a href="">
+							<button class="button">Add</button>
+						</a> 
+				</div>
+			
+				<ul class="square">
+				{% for p in priorities %}
+					<li>					
+						<span class="title"><a href=""> {{p.name}}</a>  </span> <a class="listsButton" href=""> <button class="button">Delete</button> </a>
+					</li>				
+				{% endfor %}
+				</ul>
+		</div>
+		
+		<div class="border tasks_block">
+				<div class="department">Manage statuses:
+						<a href="">
+							<button class="button">Add</button>
+						</a> 
+				</div>
+			
+				<ul class="square">
+				{% for s in statuses %}
+					<li>					
+						<span class="title"><a href=""> {{s.name}}</a>  </span> <a class="listsButton" href=""> <button class="button">Delete</button> </a>
+					</li>				
+				{% endfor %}
+				</ul>
+		</div>
+    {% endblock parameters -%}
+</div>
+</div>
+{% include "footer.html" %}
+{% endblock %}
