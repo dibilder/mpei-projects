@@ -1,0 +1,30 @@
+repositories:
+- name: ingress-nginx
+  url: https://kubernetes.github.io/ingress-nginx
+- name: jetstack
+  url: https://charts.jetstack.io
+- name: harbor
+  url: https://helm.goharbor.io
+
+releases:
+- name: nginx-ingress
+  namespace: nginx-ingress
+  chart: ingress-nginx/ingress-nginx
+  wait: true
+- name: cert-manager
+  namespace: cert-manager
+  chart: jetstack/cert-manager
+  version: v1.13.1
+  hooks:
+  - events: ['presync']
+    command: "kubectl"
+    args: ["apply", "-f", "https://github.com/cert-manager/cert-manager/releases/download/v1.13.0/cert-manager.crds.yaml" ]
+  - events: ['postsync']
+    command: "kubectl"
+    args: ["apply", "-f", "../cert-manager/acme-issuer.yaml" ]
+- name: harbor
+  namespace: harbor
+  chart: harbor/harbor
+  version: 1.13.0
+  values:
+  - ../harbor/values.yaml

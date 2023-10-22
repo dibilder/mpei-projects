@@ -1,0 +1,9 @@
+redis:
+  #image:
+    #tag: alpine
+  architecture: standalone
+  auth:
+    enabled: false
+  fullnameOverride: "redis-cart"
+  commonLabels: 
+    app: redis-cart
