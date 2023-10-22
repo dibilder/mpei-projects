@@ -1,3 +1,4 @@
 *.db
+*.tgz
 .idea
 __pycache__
